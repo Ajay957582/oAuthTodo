@@ -11,7 +11,7 @@ dotenv.config();
 // Initialize App
 const app = express();
 const corsOptions = {
-  origin: "http://localhost:3001", // Allow your frontend origin
+  origin: "http://localhost:3000", // Allow your frontend origin
   methods: ["GET", "POST", "PUT", "DELETE"], // Allow specific methods
   credentials: true, // Allow cookies and credentials
 };
