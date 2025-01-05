@@ -23,13 +23,10 @@ require("./config/passport")(passport);
 // Connect to MongoDB
 const connectDB = async () => {
   try {
-    await mongoose.connect(
-      "mongodb+srv://testing:testingpassword@cluster1.sraja.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1",
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      }
-    );
+    await mongoose.connect(process.env.DB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
     console.log("MongoDB connected successfully");
   } catch (error) {
     console.error("MongoDB connection error:", error);
