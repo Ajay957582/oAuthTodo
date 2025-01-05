@@ -7,7 +7,7 @@ module.exports = (passport) => {
       {
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: "/auth/google/page",
+        callbackURL: "https://oauthtodo.onrender.com/auth/google/page",
       },
       async (accessToken, refreshToken, profile, done) => {
         try {
