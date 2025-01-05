@@ -12,14 +12,14 @@ router.get(
 router.get(
   "/google/page",
   passport.authenticate("google", {
-    failureRedirect: "http://localhost:3001/login",
-    successRedirect: "http://localhost:3001/",
+    failureRedirect: "http://localhost:3000/login",
+    successRedirect: "http://localhost:3000/",
   })
 );
 
 // Logout Route
 router.get("/logout", (req, res) => {
-  req.logout(() => res.redirect("http://localhost:3001/"));
+  req.logout(() => res.redirect("http://localhost:3000/"));
 });
 
 module.exports = router;
