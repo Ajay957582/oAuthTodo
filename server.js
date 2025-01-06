@@ -59,7 +59,7 @@ app.use("/auth", authRoutes);
 app.use("/tasks", taskRoutes);
 app.get("/isauth", (req, res) => {
   if (req.isAuthenticated()) {
-    res.json({ message: "yes authenticated" });
+    res.json({ message: "yes authenticated", user: req.user });
   } else {
     res.json({ message: "NOt authenticated" });
   }
