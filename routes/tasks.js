@@ -9,7 +9,7 @@ const ensureAuthenticated = (req, res, next) => {
     // console.log("yeahhhhhhhh req is authenticated");
     return next();
   } else {
-    console.log("nowwww req is not authenticated");
+    console.log("nowwww req is not authenticated", req.user);
     res.status(201).json({
       message: "user session not found",
       success: false,
