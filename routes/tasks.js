@@ -22,20 +22,28 @@ const ensureAuthenticated = (req, res, next) => {
 // Get Tasks
 router.get("/", async (req, res) => {
   console.log("checking if user exists on request ?", req.user);
-  // const user = await User.findOne({ email: req.user.email });
-  // console.log("here is the user in tasks route", user);
-  // if (!user) {
-  //   res.status(201).json({
-  //     message: "user session not found",
-  //     success: false,
-  //   });
-  // } else {
-  //   res.status(200).json({
-  //     message: "user session exists",
-  //     success: true,
-  //     user,
-  //   });
-  // }
+  if (req.user) {
+    const user = await User.findOne({ email: req.user.email });
+    console.log("here is the user in tasks route", user);
+    if (!user) {
+      res.status(201).json({
+        message: "user session not found",
+        success: false,
+      });
+    } else {
+      res.status(200).json({
+        message: "user session exists",
+        success: true,
+        user,
+      });
+    }
+  } else {
+    res.status(201).json({
+      message: "user session not found",
+      success: false,
+      user: null,
+    });
+  }
 });
 
 // Add Task
