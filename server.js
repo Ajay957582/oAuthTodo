@@ -6,6 +6,7 @@ const authRoutes = require("./routes/auth");
 const taskRoutes = require("./routes/tasks");
 const dotenv = require("dotenv");
 const cors = require("cors");
+const MongoStore = require("connect-mongo");
 dotenv.config();
 
 // Initialize App
@@ -43,7 +44,11 @@ app.use(
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false },
+    cookie: { secure: false, maxAge: 1000 * 60 * 60 * 24 },
+    store: MongoStore.create({
+      mongoUrl: process.env.DB_URI,
+      collectionName: "sessions", // Optional: Name of the collection to store sessions
+    }),
   })
 );
 app.use(passport.initialize());
